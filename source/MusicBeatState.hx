@@ -174,7 +174,7 @@ class MusicBeatState extends FlxUIState
 		return val == null ? 4 : val;
 	}
 
-	public function processInput(keys:Array<flixel.input.keyboard.FlxKey>, type:InputType):Bool{
+	public function processInput(keys:Array<flixel.input.keyboard.FlxKey>, type:InputType = JUST_PRESSED):Bool{
        return switch(type){
 			case JUST_PRESSED:
 				FlxG.keys.anyJustPressed(keys);

@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="cat-mario.png">
+<SubTexture name="cat-mario idle0000" x="0" y="105" width="27" height="31" frameX="-37" frameY="-35" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario idle0001" x="0" y="105" width="27" height="31" frameX="-37" frameY="-35" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario idle0002" x="24" y="72" width="27" height="32" frameX="-37" frameY="-34" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario idle0003" x="24" y="72" width="27" height="32" frameX="-37" frameY="-34" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario idle0004" x="0" y="72" width="24" height="33" frameX="-38" frameY="-33" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario idle0005" x="0" y="72" width="24" height="33" frameX="-38" frameY="-33" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario idle0006" x="26" y="37" width="23" height="34" frameX="-38" frameY="-32" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario idle0007" x="26" y="37" width="23" height="34" frameX="-38" frameY="-32" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario idle0008" x="26" y="37" width="23" height="34" frameX="-38" frameY="-32" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario idle0009" x="26" y="37" width="23" height="34" frameX="-38" frameY="-32" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario idle0010" x="26" y="37" width="23" height="34" frameX="-38" frameY="-32" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario idle0011" x="26" y="37" width="23" height="34" frameX="-38" frameY="-32" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario left0000" x="49" y="37" width="23" height="34" frameX="-33" frameY="-32" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario left0001" x="49" y="37" width="23" height="34" frameX="-33" frameY="-32" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario left0002" x="78" y="0" width="23" height="34" frameX="-34" frameY="-32" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario left0003" x="78" y="0" width="23" height="34" frameX="-34" frameY="-32" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario left0004" x="78" y="34" width="23" height="34" frameX="-35" frameY="-32" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario left0005" x="78" y="34" width="23" height="34" frameX="-35" frameY="-32" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario left0006" x="78" y="34" width="23" height="34" frameX="-35" frameY="-32" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario left0007" x="78" y="34" width="23" height="34" frameX="-35" frameY="-32" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario down0000" x="77" y="105" width="25" height="27" frameX="-38" frameY="-39" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario down0001" x="77" y="105" width="25" height="27" frameX="-38" frameY="-39" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario down0002" x="124" y="32" width="24" height="28" frameX="-37" frameY="-38" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario down0003" x="124" y="32" width="24" height="28" frameX="-37" frameY="-38" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario down0004" x="27" y="105" width="25" height="29" frameX="-36" frameY="-37" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario down0005" x="27" y="105" width="25" height="29" frameX="-36" frameY="-37" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario down0006" x="27" y="105" width="25" height="29" frameX="-36" frameY="-37" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario down0007" x="27" y="105" width="25" height="29" frameX="-36" frameY="-37" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario up0000" x="0" y="0" width="26" height="37" frameX="-35" frameY="-29" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario up0001" x="0" y="0" width="26" height="37" frameX="-35" frameY="-29" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario up0002" x="26" y="0" width="26" height="37" frameX="-35" frameY="-29" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario up0003" x="26" y="0" width="26" height="37" frameX="-35" frameY="-29" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario up0004" x="52" y="0" width="26" height="36" frameX="-35" frameY="-30" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario up0005" x="52" y="0" width="26" height="36" frameX="-35" frameY="-30" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario up0006" x="52" y="0" width="26" height="36" frameX="-35" frameY="-30" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario up0007" x="52" y="0" width="26" height="36" frameX="-35" frameY="-30" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario right0000" x="51" y="72" width="25" height="32" frameX="-40" frameY="-34" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario right0001" x="51" y="72" width="25" height="32" frameX="-40" frameY="-34" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario right0002" x="76" y="72" width="24" height="32" frameX="-40" frameY="-34" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario right0003" x="76" y="72" width="24" height="32" frameX="-40" frameY="-34" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario right0004" x="100" y="72" width="24" height="32" frameX="-39" frameY="-34" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario right0005" x="100" y="72" width="24" height="32" frameX="-39" frameY="-34" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario right0006" x="100" y="72" width="24" height="32" frameX="-39" frameY="-34" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario right0007" x="100" y="72" width="24" height="32" frameX="-39" frameY="-34" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario left miss0000" x="101" y="0" width="23" height="34" frameX="-36" frameY="-32" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario left miss0001" x="101" y="0" width="23" height="34" frameX="-36" frameY="-32" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario left miss0002" x="101" y="0" width="23" height="34" frameX="-36" frameY="-32" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario left miss0003" x="101" y="0" width="23" height="34" frameX="-36" frameY="-32" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario left miss0004" x="101" y="0" width="23" height="34" frameX="-36" frameY="-32" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario left miss0005" x="101" y="0" width="23" height="34" frameX="-36" frameY="-32" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario down miss0000" x="52" y="105" width="25" height="29" frameX="-36" frameY="-37" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario down miss0001" x="52" y="105" width="25" height="29" frameX="-36" frameY="-37" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario down miss0002" x="52" y="105" width="25" height="29" frameX="-36" frameY="-37" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario down miss0003" x="52" y="105" width="25" height="29" frameX="-36" frameY="-37" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario down miss0004" x="52" y="105" width="25" height="29" frameX="-36" frameY="-37" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario down miss0005" x="52" y="105" width="25" height="29" frameX="-36" frameY="-37" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario up miss0000" x="0" y="37" width="26" height="35" frameX="-35" frameY="-31" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario up miss0001" x="0" y="37" width="26" height="35" frameX="-35" frameY="-31" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario up miss0002" x="0" y="37" width="26" height="35" frameX="-35" frameY="-31" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario up miss0003" x="0" y="37" width="26" height="35" frameX="-35" frameY="-31" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario up miss0004" x="0" y="37" width="26" height="35" frameX="-35" frameY="-31" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario up miss0005" x="0" y="37" width="26" height="35" frameX="-35" frameY="-31" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario right miss0000" x="124" y="0" width="24" height="32" frameX="-39" frameY="-34" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario right miss0001" x="124" y="0" width="24" height="32" frameX="-39" frameY="-34" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario right miss0002" x="124" y="0" width="24" height="32" frameX="-39" frameY="-34" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario right miss0003" x="124" y="0" width="24" height="32" frameX="-39" frameY="-34" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario right miss0004" x="124" y="0" width="24" height="32" frameX="-39" frameY="-34" frameWidth="100" frameHeight="100" />
+<SubTexture name="cat-mario right miss0005" x="124" y="0" width="24" height="32" frameX="-39" frameY="-34" frameWidth="100" frameHeight="100" />
+</TextureAtlas>

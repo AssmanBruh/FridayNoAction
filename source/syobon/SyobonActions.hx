@@ -1,3 +1,5 @@
+package syobon;
+
 import flixel.FlxState;
 import flixel.FlxG;
 
@@ -20,13 +22,12 @@ class SyobonActions{
 
     public function setTitle(title:String, force:Bool = false){
         var gameTitle = "Friday No Action!";
-        #if desktop
         if (force){
             gameTitle = title;
         }else{
             gameTitle += title;
         }
 
-        lime.window.Window.current.title = gameTitle;
+        // lime.window.Window.current.title = gameTitle;
     }
 }
