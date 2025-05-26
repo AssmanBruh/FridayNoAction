@@ -4140,6 +4140,12 @@ class PlayState extends MusicBeatState
 			spawnNoteSplashOnNote(note);
 		}
 
+		if (daRating.name.toLowerCase() == "bad"){
+			note.colorSwap.saturation = (-70) / 100;
+			note.alpha = 0.45;
+			note.multAlpha = 0.45;
+		}
+
 		if(!practiceMode && !cpuControlled) {
 			songScore += score;
 			if(!note.ratingDisabled)
@@ -4736,7 +4742,12 @@ class PlayState extends MusicBeatState
 				var spr = playerStrums.members[note.noteData];
 				if(spr != null)
 				{
-					spr.playAnim('confirm', true);
+					if (note.rating.toLowerCase()=="bad")
+					{
+						spr.playAnim("pressed",true);
+					}else{
+						spr.playAnim('confirm', true);
+					}
 				}
 			}
 			note.wasGoodHit = true;
@@ -4749,9 +4760,11 @@ class PlayState extends MusicBeatState
 
 			if (!note.isSustainNote)
 			{
-				note.kill();
-				notes.remove(note, true);
-				note.destroy();
+				if (note.rating.toLowerCase() != "bad"){
+					note.kill();
+					notes.remove(note, true);
+					note.destroy();
+				}
 			}
 		}
 	}

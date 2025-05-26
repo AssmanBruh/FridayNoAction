@@ -274,7 +274,8 @@ class MainMenuState extends MusicBeatState
 
 		if (processInput([ONE])){
 			FlxG.sound.play(Paths.sound('confirmMenu'));
-			SyobonActions.goTo(new SyobonMenu());
+			// SyobonActions.goTo(new SyobonMenu());
+			LoadingState.loadAndSwitchState(new SyobonMenu());
 		}
 	}
 
