@@ -34,6 +34,7 @@ class SyobonMenu extends MusicBeatState{
 
         // var snapFilter = new ShaderFilter(new PixelSnapShader(SYOBON_BG_GLOBAL_SCALE));
         // FlxG.camera.setFilters([snapFilter]);
+
     }
 
     override function update(elapsed:Float){
@@ -63,6 +64,13 @@ class SyobonMenu extends MusicBeatState{
             a.playAnim("singDOWN",true);
         }if (FlxG.keys.justPressed.W){
             a.playAnim("singUP",true);
+        }
+        if (FlxG.keys.justPressed.ESCAPE){
+            FlxG.switchState(new MainMenuState());
+        }
+        if (FlxG.keys.justPressed.SEVEN){
+            // FlxG.switchState(new SyobonCharacterEditor("bf-cat"));
+            FlxG.switchState(new SyobonCharacterEditor("star-sun"));
         }
     }
 }

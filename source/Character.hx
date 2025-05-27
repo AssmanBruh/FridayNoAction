@@ -17,6 +17,7 @@ import openfl.utils.AssetType;
 import openfl.utils.Assets;
 import haxe.Json;
 import haxe.format.JsonParser;
+import syobon.SyobonActions;
 
 using StringTools;
 
@@ -51,6 +52,7 @@ class Character extends FlxSprite
 
 	public var isPlayer:Bool = false;
 	public var curCharacter:String = DEFAULT_CHARACTER;
+	public var syobonStyledCharacter:Bool = false;
 
 	public var colorTween:FlxTween;
 	public var holdTimer:Float = 0;
@@ -95,8 +97,143 @@ class Character extends FlxSprite
 		switch (curCharacter)
 		{
 			//case 'your character name in case you want to hardcode them instead':
-
+			case 'bf-cat', 'molalla', 'star-sun':
+				syobonStyledCharacter = true;
 			default:
+				syobonStyledCharacter = false;
+		}
+
+		switch (syobonStyledCharacter){
+			case true:
+				var characterPath:String = 'characters/' + curCharacter + '.json';
+
+				#if MODS_ALLOWED
+				var path:String = Paths.modFolders(characterPath);
+				if (!FileSystem.exists(path)) {
+					path = Paths.getPreloadPath(characterPath);
+				}
+
+				if (!FileSystem.exists(path))
+				#else
+				var path:String = Paths.getPreloadPath(characterPath);
+				if (!Assets.exists(path))
+				#end
+				{
+					path = Paths.getPreloadPath('characters/' + DEFAULT_CHARACTER + '.json'); //If a character couldn't be found, change him to BF just to prevent a crash
+				}
+
+				#if MODS_ALLOWED
+				var rawJson = File.getContent(path);
+				#else
+				var rawJson = Assets.getText(path);
+				#end
+
+				var json:CharacterFile = cast Json.parse(rawJson);
+				var spriteType = "sparrow";
+				//sparrow
+				//packer
+				//texture
+				#if MODS_ALLOWED
+				var modTxtToFind:String = Paths.modsTxt(json.image);
+				var txtToFind:String = Paths.getPath('images/' + json.image + '.txt', TEXT);
+				
+				//var modTextureToFind:String = Paths.modFolders("images/"+json.image);
+				//var textureToFind:String = Paths.getPath('images/' + json.image, new AssetType();
+				
+				if (FileSystem.exists(modTxtToFind) || FileSystem.exists(txtToFind) || Assets.exists(txtToFind))
+				#else
+				if (Assets.exists(Paths.getPath('images/' + json.image + '.txt', TEXT)))
+				#end
+				{
+					spriteType = "packer";
+				}
+				
+				#if MODS_ALLOWED
+				var modAnimToFind:String = Paths.modFolders('images/' + json.image + '/Animation.json');
+				var animToFind:String = Paths.getPath('images/' + json.image + '/Animation.json', TEXT);
+				
+				//var modTextureToFind:String = Paths.modFolders("images/"+json.image);
+				//var textureToFind:String = Paths.getPath('images/' + json.image, new AssetType();
+				
+				if (FileSystem.exists(modAnimToFind) || FileSystem.exists(animToFind) || Assets.exists(animToFind))
+				#else
+				if (Assets.exists(Paths.getPath('images/' + json.image + '/Animation.json', TEXT)))
+				#end
+				{
+					spriteType = "texture";
+				}
+
+				var frameSizePerCharacter = [0.0, 0.0];
+				switch (curCharacter){
+					case "bf-cat":
+						// 8 is the grid size, wich frame has 6 grids x 6 grids
+						frameSizePerCharacter = [8*6, 8*6];
+					case "star-sun":
+						frameSizePerCharacter = [8*6, 8*6];
+					case "molalla":
+						frameSizePerCharacter = [width/4,width/4];
+				}
+				var splittedJsonImage = json.image.split("/");
+				var charLibUrl = splittedJsonImage[0]; // characters
+				var charUrl = splittedJsonImage[1]; // char image file
+				loadGraphic(Paths.image(charLibUrl+"/syobon-style/"+charUrl, "shared"), true, Std.int(frameSizePerCharacter[0]), Std.int(frameSizePerCharacter[1]));
+				imageFile = charLibUrl+"/syobon-style/"+charUrl;
+
+				setGraphicSize(Std.int(width * SyobonActions.SYOBON_GLOBAL_SCALE));
+				updateHitbox();
+
+				positionArray = json.position;
+				cameraPosition = json.camera_position;
+
+				healthIcon = json.healthicon;
+				singDuration = json.sing_duration;
+				flipX = !!json.flip_x;
+
+				if(json.healthbar_colors != null && json.healthbar_colors.length > 2)
+					healthColorArray = json.healthbar_colors;
+
+				antialiasing = false;
+
+				animationsArray = json.animations;
+				switch (curCharacter){
+					case "bf-cat":
+						// 8 is the grid size, wich frame has 6 grids x 6 grids
+						animation.add("idle", [0, 1, 2, 3], 12, false);
+						animation.add("singLEFT", [4, 5, 6], 12, false);
+						animation.add("singDOWN", [7, 8, 9], 12, false);
+						animation.add("singUP", [10, 11, 12], 12, false);
+						animation.add("singRIGHT", [13, 14, 15], 12, false);
+						animation.add("singRIGHTmiss", [13, 19], 12, false);
+						animation.add("singLEFTmiss", [4, 16], 12, false);
+						animation.add("singDOWNmiss", [7, 17], 12, false);
+						animation.add("singUPmiss", [11, 18], 12, false);
+					case "star-sun":
+						animation.add("idle", [0, 1, 2], 12, false);
+						animation.add("singLEFT", [3, 4, 5], 12, false);
+						animation.add("singDOWN", [6, 7, 8], 12, false);
+						animation.add("singUP", [9, 10, 11], 12, false);
+						animation.add("singRIGHT", [12, 13, 14], 12, false);
+					case "molalla":	
+						// SHITTYY
+					    // var anims = ["idle", "singLEFT", "singDOWN", "singUP", "singRIGHT"];
+						// for (i in 0...5){
+						// 	trace("waa: "+[(i%4) - (anims[i] == "idle" ? 0:1)]);
+						// 	animation.add(anims[i], [(i%4) - (anims[i] == "idle" ? 0:1)], 12, false);
+						// }
+						animation.add("idle", [0, 1, 2, 3], 12, false);
+						animation.add("singLEFT", [8, 9], 12, false);
+						animation.add("singDOWN", [4, 5], 12, false);
+						animation.add("singUP", [6, 7], 12, false);
+						animation.add("singRIGHT", [10, 11], 12, false);
+				}
+				if(animationsArray != null && animationsArray.length > 0) {
+					for (anim in animationsArray) {
+						if(anim.offsets != null && anim.offsets.length > 1) {
+							addOffset(anim.anim, anim.offsets[0], anim.offsets[1]);
+						}
+					}
+				}
+			case false:	
 				var characterPath:String = 'characters/' + curCharacter + '.json';
 
 				#if MODS_ALLOWED
@@ -214,6 +351,7 @@ class Character extends FlxSprite
 				}
 				//trace('Loaded file to character ' + curCharacter);
 		}
+
 		originalFlipX = flipX;
 
 		if(animOffsets.exists('singLEFTmiss') || animOffsets.exists('singDOWNmiss') || animOffsets.exists('singUPmiss') || animOffsets.exists('singRIGHTmiss')) hasMissAnimations = true;

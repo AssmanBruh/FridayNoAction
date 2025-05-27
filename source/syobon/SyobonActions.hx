@@ -30,4 +30,6 @@ class SyobonActions{
 
         // lime.window.Window.current.title = gameTitle;
     }
+
+    public static var SYOBON_GLOBAL_SCALE:Float = 2.057142857143;
 }

@@ -54,7 +54,7 @@ class StrumNote extends FlxSprite
 			loadGraphic(Paths.image('pixelUI/' + texture), true, Math.floor(width), Math.floor(height));
 
 			antialiasing = false;
-			setGraphicSize(Std.int(width * PlayState.daPixelZoom));
+			setGraphicSize(Std.int(width * (PlayState.daPixelZoom)));
 
 			animation.add('green', [6]);
 			animation.add('red', [7]);
@@ -123,7 +123,7 @@ class StrumNote extends FlxSprite
 		playAnim('static');
 		x += Note.swagWidth * noteData;
 		// x += 50;
-		x -= 22;
+		x -= 30;
 		x += ((FlxG.width / 2) * player);
 		ID = noteData;
 	}
