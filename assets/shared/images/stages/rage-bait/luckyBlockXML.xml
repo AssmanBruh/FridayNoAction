@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="luckBlockJsonTest.png">
+	<!-- Created with Aseprite to XML Converter by AssmanBruh! & DeepSeek Chat -->
+	<SubTexture name="luckyblock0002" x="54" y="0" width="27" height="26"/>
+	<SubTexture name="luckyblock0003" x="81" y="0" width="27" height="26"/>
+	<SubTexture name="luckyblock0004" x="108" y="0" width="27" height="26"/>
+	<SubTexture name="luckyblock0005" x="135" y="0" width="27" height="26"/>
+	<SubTexture name="luckyblock0000" x="0" y="0" width="27" height="26"/>
+	<SubTexture name="luckyblock0001" x="27" y="0" width="27" height="26"/>
+</TextureAtlas>

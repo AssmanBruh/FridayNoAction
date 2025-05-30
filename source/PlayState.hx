@@ -61,6 +61,12 @@ import FunkinLua;
 import DialogueBoxPsych;
 import Conductor.Rating;
 
+// syobon
+import syobon.*;
+import backend.CharacterGroup;
+// stages
+import syobon.stages.*;
+
 #if !flash 
 import flixel.addons.display.FlxRuntimeShader;
 import openfl.filters.ShaderFilter;
@@ -267,6 +273,9 @@ class PlayState extends MusicBeatState
 	var foregroundSprites:FlxTypedGroup<BGSprite>;
 
 	var rageBiteStage:RageBaitStage;
+	var molalla:Character;
+	var star:Character;
+	public var extraChars:CharacterGroup;
 
 	public var songScore:Int = 0;
 	public var songHits:Int = 0;
@@ -836,6 +845,11 @@ class PlayState extends MusicBeatState
 				foregroundSprites.add(new BGSprite('tank5', 1620, 700, 1.5, 1.5, ['fg']));
 				if(!ClientPrefs.lowQuality) foregroundSprites.add(new BGSprite('tank3', 1300, 1200, 3.5, 2.5, ['fg']));
 				case "rage-bait":
+					GameOverSubstate.deathSoundName = 'fnf_loss_sfx-pixel';
+					GameOverSubstate.loopSoundName = 'gameOver-pixel';
+					GameOverSubstate.endSoundName = 'gameOverEnd-pixel';
+					GameOverSubstate.characterName = 'bf-pixel-dead';
+
 					rageBiteStage = new RageBaitStage();
 					add(rageBiteStage);
 		}
@@ -981,11 +995,17 @@ class PlayState extends MusicBeatState
 		startCharacterPos(dad, true);
 		dadGroup.add(dad);
 		startCharacterLua(dad.curCharacter);
+		if (curStage == "rage-bait"){
+			dad.scale.set(SyobonActions.SYOBON_GLOBAL_SCALE,SyobonActions.SYOBON_GLOBAL_SCALE);
+		}
 
 		boyfriend = new Boyfriend(0, 0, SONG.player1);
 		startCharacterPos(boyfriend);
 		boyfriendGroup.add(boyfriend);
 		startCharacterLua(boyfriend.curCharacter);
+
+		// extraChars = new CharacterGroup();
+		// add(extraChars);
 
 		var camPos:FlxPoint = new FlxPoint(girlfriendCameraOffset[0], girlfriendCameraOffset[1]);
 		if(gf != null)
@@ -998,20 +1018,6 @@ class PlayState extends MusicBeatState
 			dad.setPosition(GF_X, GF_Y);
 			if(gf != null)
 				gf.visible = false;
-		}
-
-		switch(curStage)
-		{
-			case 'limo':
-				resetFastCar();
-				addBehindGF(fastCar);
-
-			case 'schoolEvil':
-				var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069); //nice
-				addBehindDad(evilTrail);
-			case 'rage-bait':
-				// molalla
-				// 306, 257
 		}
 
 		var file:String = Paths.json(songName + '/dialogue'); //Checks for json/Psych Engine dialogue
@@ -1084,6 +1090,8 @@ class PlayState extends MusicBeatState
 			timeTxt.y += 3;
 		}
 
+		SyobonNoteSplashPool.clear();
+		SyobonNoteSplashPool.preload(true, "syobonNoteSplashes");
 		var splash:NoteSplash = new NoteSplash(100, 100, 0);
 		grpNoteSplashes.add(splash);
 		splash.alpha = 0.0;
@@ -1123,6 +1131,35 @@ class PlayState extends MusicBeatState
 
 		FlxG.fixedTimestep = false;
 		moveCameraSection();
+
+		switch(curStage)
+		{
+			case 'limo':
+				resetFastCar();
+				addBehindGF(fastCar);
+
+			case 'schoolEvil':
+				var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069); //nice
+				addBehindDad(evilTrail);
+			case 'rage-bait':
+				// sun, of sun glasses bruhbruhbruh
+				camPos.x = 0;
+				camPos.y = 0;
+				camFollow.set(FlxG.width/2,FlxG.height/2);
+				camFollowPos.screenCenter();
+				star = new Character(279, 153, 'star-sun');
+				add(star);
+				molalla = new Character(306, 257, 'molalla');
+				add(molalla);
+				// molalla
+				// 306, 257
+				// ========== CHAR SETUPS =========
+				dad.flipX = false;
+				if (boyfriend.curCharacter.startsWith("fernan")){
+					// adjusting! d:
+					boyfriend.setGraphicSize(Std.int(boyfriend.width*0.1));
+				}
+		}
 
 		healthBarBG = new AttachedSprite('healthBar');
 		healthBarBG.y = FlxG.height * 0.89;
@@ -2153,6 +2190,20 @@ class PlayState extends MusicBeatState
 					dad.dance();
 				}
 
+				if (curStage == "rage-bait"){
+					if (star != null){
+						if (tmr.loopsLeft % star.danceEveryNumBeats == 0 && star.animation.curAnim != null && !star.animation.curAnim.name.startsWith('sing') && !star.stunned)
+						{
+							star.dance();
+						}
+					}if (molalla != null){
+						if (tmr.loopsLeft % molalla.danceEveryNumBeats == 0 && molalla.animation.curAnim != null && !molalla.animation.curAnim.name.startsWith('sing') && !molalla.stunned)
+						{
+							molalla.dance();
+						}
+					}
+				}
+
 				var introAssets:Map<String, Array<String>> = new Map<String, Array<String>>();
 				introAssets.set('default', ['ready', 'set', 'go']);
 				introAssets.set('pixel', ['pixelUI/ready-pixel', 'pixelUI/set-pixel', 'pixelUI/date-pixel']);
@@ -2881,6 +2932,8 @@ class PlayState extends MusicBeatState
 	var canPause:Bool = true;
 	var limoSpeed:Float = 0;
 
+	var testingCountCharPositionMoveAboveKeysAssmanIsADumbMuaJajajaOdioALaHumanidadLosDestruireAtodos = 0;
+
 	override public function update(elapsed:Float)
 	{
 		/*if (FlxG.keys.justPressed.NINE)
@@ -3033,6 +3086,36 @@ class PlayState extends MusicBeatState
 		}
 
 		super.update(elapsed);
+
+		// DEBUGGIN
+		if (Main.assmanDebug){
+			if (FlxG.keys.justPressed.THREE){
+				testingCountCharPositionMoveAboveKeysAssmanIsADumbMuaJajajaOdioALaHumanidadLosDestruireAtodos = FlxMath.wrap(testingCountCharPositionMoveAboveKeysAssmanIsADumbMuaJajajaOdioALaHumanidadLosDestruireAtodos+1, 0, 4);
+			}
+			var selectedChar = switch (testingCountCharPositionMoveAboveKeysAssmanIsADumbMuaJajajaOdioALaHumanidadLosDestruireAtodos){
+				case 0: boyfriend;
+				case 1: gf;
+				case 2: dad;
+				case _: boyfriend;
+			}
+			if (FlxG.keys.justPressed.I || FlxG.keys.justPressed.J || FlxG.keys.justPressed.K || FlxG.keys.justPressed.L){
+				var XOrY = (FlxG.keys.justPressed.J || FlxG.keys.justPressed.L);//detetcs X axis :v
+				var posAdd = 1;
+				var isNegative = (FlxG.keys.justPressed.I || FlxG.keys.justPressed.J);
+				if (isNegative) posAdd = -1;
+				var multiteta = (FlxG.keys.pressed.SHIFT ? 1:10);
+				if (XOrY){
+					selectedChar.x += posAdd * multiteta;
+				}else{
+					selectedChar.y += posAdd * multiteta;
+				}
+				trace(selectedChar.curCharacter.toUpperCase() + " X: "+selectedChar.x+", Y: "+selectedChar.y);
+			}
+			if (FlxG.keys.pressed.CONTROL){
+				FlxG.camera.zoom = 0.5;
+				camHUD.zoom = 0.5;
+			}
+		}
 
 		setOnLuas('curDecStep', curDecStep);
 		setOnLuas('curDecBeat', curDecBeat);
@@ -4635,6 +4718,13 @@ class PlayState extends MusicBeatState
 				char = gf;
 			}
 
+			switch (note.noteType){
+				case "Molalla Sing":
+					char = molalla;
+				case "Star Sing":
+					char = star;
+			}
+
 			if(char != null)
 			{
 				char.playAnim(animToPlay, true);
@@ -4721,8 +4811,18 @@ class PlayState extends MusicBeatState
 				}
 				else
 				{
-					boyfriend.playAnim(animToPlay + note.animSuffix, true);
-					boyfriend.holdTimer = 0;
+					
+					switch (note.noteType){
+						case "Molalla Sing":
+							molalla.playAnim(animToPlay + note.animSuffix, true);
+							molalla.holdTimer = 0;
+						case "Star Sing":
+							star.playAnim(animToPlay + note.animSuffix, true);
+							star.holdTimer = 0;
+					    default:
+							boyfriend.playAnim(animToPlay + note.animSuffix, true);
+							boyfriend.holdTimer = 0;
+					}
 				}
 
 				if(note.noteType == 'Hey!') {
@@ -4781,7 +4881,9 @@ class PlayState extends MusicBeatState
 		if(ClientPrefs.noteSplashes && note != null) {
 			var strum:StrumNote = playerStrums.members[note.noteData];
 			if(strum != null) {
-				spawnNoteSplash(strum.x, strum.y, note.noteData, note);
+				var noteSplash = SyobonNoteSplashPool.get(strum.x, strum.y, note, true);
+				// spawnNoteSplash(strum.x, strum.y, note.noteData, note);
+				add(noteSplash);
 			}
 		}
 	}
@@ -5075,6 +5177,18 @@ class PlayState extends MusicBeatState
 		switch (curStage)
 		{
 			case 'rage-bait':
+				if (star != null){
+					if (curBeat % star.danceEveryNumBeats == 0 && star.animation.curAnim != null && !star.animation.curAnim.name.startsWith('sing') && !star.stunned)
+					{
+						star.dance();
+					}
+				}
+				if (molalla != null){
+					if (curBeat % molalla.danceEveryNumBeats == 0 && molalla.animation.curAnim != null && !molalla.animation.curAnim.name.startsWith('sing') && !molalla.stunned)
+					{
+						molalla.dance();
+					}
+				}
 				rageBiteStage.beatHit(curBeat);
 			case 'tank':
 				if(!ClientPrefs.lowQuality) tankWatchtower.dance();

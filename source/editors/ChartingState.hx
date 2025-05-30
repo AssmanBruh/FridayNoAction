@@ -67,6 +67,8 @@ class ChartingState extends MusicBeatState
 		'Hey!',
 		'Hurt Note',
 		'GF Sing',
+		'Star Sing',
+		'Molalla Sing',
 		'No Animation'
 	];
 	private var noteTypeIntMap:Map<Int, String> = new Map<Int, String>();
@@ -334,7 +336,8 @@ class ChartingState extends MusicBeatState
 		UI_box = new FlxUITabMenu(null, tabs, true);
 
 		UI_box.resize(300, 400);
-		UI_box.x = 640 + GRID_SIZE / 2;
+		// UI_box.x = 640 + GRID_SIZE / 2;
+		UI_box.x = FlxG.width-GRID_SIZE*8;
 		UI_box.y = 25;
 		UI_box.scrollFactor.set();
 
@@ -463,14 +466,14 @@ class ChartingState extends MusicBeatState
 			saveEvents();
 		});
 
-		var clear_events:FlxButton = new FlxButton(320, 310, 'Clear events', function()
+		var clear_events:FlxButton = new FlxButton(FlxG.width-320, UI_box.y+40, 'Clear events', function()
 			{
 				openSubState(new Prompt('This action will clear current progress.\n\nProceed?', 0, clearEvents, null,ignoreWarnings));
 			});
 		clear_events.color = FlxColor.RED;
 		clear_events.label.color = FlxColor.WHITE;
 
-		var clear_notes:FlxButton = new FlxButton(320, clear_events.y + 30, 'Clear notes', function()
+		var clear_notes:FlxButton = new FlxButton(FlxG.width-320, clear_events.y + 30, 'Clear notes', function()
 			{
 				openSubState(new Prompt('This action will clear current progress.\n\nProceed?', 0, function(){for (sec in 0..._song.notes.length) {
 					_song.notes[sec].sectionNotes = [];

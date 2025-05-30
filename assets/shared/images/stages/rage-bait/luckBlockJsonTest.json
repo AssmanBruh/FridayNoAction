@@ -1,0 +1,64 @@
+{ "frames": {
+   "luckyblock 0.ase": {
+    "frame": { "x": 0, "y": 0, "w": 27, "h": 26 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 27, "h": 26 },
+    "sourceSize": { "w": 27, "h": 26 },
+    "duration": 100
+   },
+   "luckyblock 1.ase": {
+    "frame": { "x": 27, "y": 0, "w": 27, "h": 26 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 27, "h": 26 },
+    "sourceSize": { "w": 27, "h": 26 },
+    "duration": 100
+   },
+   "luckyblock 2.ase": {
+    "frame": { "x": 54, "y": 0, "w": 27, "h": 26 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 27, "h": 26 },
+    "sourceSize": { "w": 27, "h": 26 },
+    "duration": 100
+   },
+   "luckyblock 3.ase": {
+    "frame": { "x": 81, "y": 0, "w": 27, "h": 26 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 27, "h": 26 },
+    "sourceSize": { "w": 27, "h": 26 },
+    "duration": 100
+   },
+   "luckyblock 4.ase": {
+    "frame": { "x": 108, "y": 0, "w": 27, "h": 26 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 27, "h": 26 },
+    "sourceSize": { "w": 27, "h": 26 },
+    "duration": 100
+   },
+   "luckyblock 5.ase": {
+    "frame": { "x": 135, "y": 0, "w": 27, "h": 26 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 27, "h": 26 },
+    "sourceSize": { "w": 27, "h": 26 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "https://github.com/LibreSprite/LibreSprite/",
+  "version": "1.1-dev",
+  "image": "C:\\Users\\cybertel\\Desktop\\funkin\\funkin_syobon\\FNAStageBuilder\\assets\\images\\luckBlockJsonTest.png",
+  "format": "RGBA8888",
+  "size": { "w": 162, "h": 26 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "Layer 1", "opacity": 255, "blendMode": "normal" }
+  ]
+ }
+}

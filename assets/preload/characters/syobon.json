@@ -1,110 +1,110 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				1,
 				0
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "idle",
-			"loop": false,
-			"name": "cat-mario idle"
+			"fps": 24,
+			"name": "cat-mario idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "singLEFT",
-			"loop": false,
-			"name": "cat-mario left0"
+			"fps": 24,
+			"name": "cat-mario left0",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "singDOWN",
-			"loop": false,
-			"name": "cat-mario down0"
+			"fps": 24,
+			"name": "cat-mario down0",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "singUP",
-			"loop": false,
-			"name": "cat-mario up0"
+			"fps": 24,
+			"name": "cat-mario up0",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "singRIGHT",
-			"loop": false,
-			"name": "cat-mario right0"
+			"fps": 24,
+			"name": "cat-mario right0",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "singRIGHTmiss",
-			"loop": false,
-			"name": "cat-mario right miss"
+			"fps": 24,
+			"name": "cat-mario right miss",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "singLEFTmiss",
-			"loop": false,
-			"name": "cat-mario left miss"
+			"fps": 24,
+			"name": "cat-mario left miss",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "singDOWNmiss",
-			"loop": false,
-			"name": "cat-mario down miss"
+			"fps": 24,
+			"name": "cat-mario down miss",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "singUPmiss",
-			"loop": false,
-			"name": "cat-mario up miss"
+			"fps": 24,
+			"name": "cat-mario up miss",
+			"indices": []
 		}
 	],
 	"no_antialiasing": true,
 	"image": "characters/cat-mario",
 	"position": [
-		-480,
-		480
+		140,
+		490
 	],
 	"healthicon": "face",
 	"flip_x": false,
@@ -114,8 +114,8 @@
 		161
 	],
 	"camera_position": [
-		460,
-		540
+		640,
+		33
 	],
 	"sing_duration": 6.1,
 	"scale": 6.00000000000001

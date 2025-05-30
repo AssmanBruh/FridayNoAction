@@ -171,18 +171,26 @@ class Character extends FlxSprite
 					case "star-sun":
 						frameSizePerCharacter = [8*6, 8*6];
 					case "molalla":
-						frameSizePerCharacter = [width/4,width/4];
+						// 512 is the graphic size of the molalla sprite :v
+						frameSizePerCharacter = [512/4,512/4];
 				}
 				var splittedJsonImage = json.image.split("/");
 				var charLibUrl = splittedJsonImage[0]; // characters
 				var charUrl = splittedJsonImage[1]; // char image file
-				loadGraphic(Paths.image(charLibUrl+"/syobon-style/"+charUrl, "shared"), true, Std.int(frameSizePerCharacter[0]), Std.int(frameSizePerCharacter[1]));
-				imageFile = charLibUrl+"/syobon-style/"+charUrl;
+				if (charUrl == "syobon-style"){
+					charUrl = splittedJsonImage[2]; // syobon-style char image file
+				}
+				var charImgUrl = charLibUrl+"/syobon-style/"+charUrl;
+				json.image = charImgUrl;
+				trace("Syobon Styled Loaded Character: "+charImgUrl);
+				loadGraphic(Paths.image(charImgUrl, "shared"), true, Std.int(frameSizePerCharacter[0]), Std.int(frameSizePerCharacter[1]));
+				imageFile = charImgUrl;
 
-				setGraphicSize(Std.int(width * SyobonActions.SYOBON_GLOBAL_SCALE));
+				// setGraphicSize(Std.int(width * SyobonActions.SYOBON_GLOBAL_SCALE));
+				scale.set(SyobonActions.SYOBON_GLOBAL_SCALE,SyobonActions.SYOBON_GLOBAL_SCALE);
 				updateHitbox();
 
-				positionArray = json.position;
+				// positionArray = json.position;
 				cameraPosition = json.camera_position;
 
 				healthIcon = json.healthicon;
@@ -392,6 +400,11 @@ class Character extends FlxSprite
 		}
 	}
 
+	/**
+		* Not a turn literal, just swap the value between 1 and -1
+		for directions
+	**/
+	public var IA_turn:Int = 1;
 	override function update(elapsed:Float)
 	{
 		if(!debugMode && animation.curAnim != null)
@@ -446,6 +459,34 @@ class Character extends FlxSprite
 			if(animation.curAnim.finished && animation.getByName(animation.curAnim.name + '-loop') != null)
 			{
 				playAnim(animation.curAnim.name + '-loop');
+			}
+
+			switch (curCharacter){
+				case 'bf-cat':
+			    case 'molalla':
+					if (x > 386) IA_turn = -1;
+					if (x < 277) IA_turn = 1;
+					// if (star.y > 257) turn = 1;
+
+					var molallaFlip = IA_turn == 1 ? false : true;
+
+					// this buggy because idk :v
+					// scale.x *= IA_turn;
+					flipX = molallaFlip;
+					velocity.x = 100*IA_turn;
+				case 'star-sun':
+					// if (star.animation.curAnim.name == "idle"){
+					if (y < 97) IA_turn = -1;
+					if (y > 153) IA_turn = 1;
+	
+					velocity.y = -140*IA_turn;
+					// }else{
+						// star.velocity.y = 0;
+					// }
+				case 'fernan-happy':
+				if (FlxG.keys.pressed.FOUR || FlxG.keys.pressed.FIVE){
+					angle += (FlxG.keys.pressed.FOUR ? -1:1)*5;
+				}	
 			}
 		}
 		super.update(elapsed);

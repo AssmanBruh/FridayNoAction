@@ -1,4 +1,4 @@
-package;
+package syobon.stages;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -11,7 +11,7 @@ import flixel.util.FlxTimer;
 
 using StringTools;
 
-class RageBaitStage extends FlxSpriteGroup
+class RageBaitStage extends FlxTypedGroup<Dynamic>
 {
 	var luckyblocks:FlxTypedGroup<FlxSprite>;
 	var currentLuckyBlockID:Int = 0;
@@ -29,9 +29,9 @@ class RageBaitStage extends FlxSpriteGroup
 		solid.scrollFactor.set();
 		add(solid);
 
-		var bg = new FlxSprite(0,0,"assets/images/Blocks.png");
+		var bg = new FlxSprite(0,0,Paths.image("stages/rage-bait/Blocks", "shared"));
 		bg.setGraphicSize(0,FlxG.height);
-		// bg.setGraphicSize(Std.int(bg.width*CoolUtil.SYOBON_GLOBAL_SCALE));
+		// bg.setGraphicSize(Std.int(bg.width*SyobonActions.SYOBON_GLOBAL_SCALE));
 		bg.screenCenter();
 		add(bg);
 
@@ -39,7 +39,7 @@ class RageBaitStage extends FlxSpriteGroup
 		add(luckyblocks);
 
 		for (i in 0...3){
-		var luckyblock = new FlxSprite(217.371428571452, 228.514285714302).loadGraphic("assets/images/luckyblock.png", true, 27, 26);
+		var luckyblock = new FlxSprite(217.371428571452, 228.514285714302).loadGraphic(Paths.image("stages/rage-bait/luckyblock", "shared"), true, 27, 26);
 		// var luckyblock = new FlxSprite(217.371428571452, 228.514285714302);
 		// luckyblock.frames = FlxAtlasFrames.fromSparrow("assets/images/luckBlockJsonTest.png","assets/images/luckBlockJsonTest.xml");
 		luckyblock.animation.add("bump", [0, 1, 2, 3, 4, 5], 12, false);
@@ -48,13 +48,13 @@ class RageBaitStage extends FlxSpriteGroup
 		// luckyblock.animation.play("start");
 		luckyblock.ID = i;
 		luckyblock.antialiasing = false;
-		luckyblock.setGraphicSize(Std.int(luckyblock.width*CoolUtil.SYOBON_GLOBAL_SCALE));
+		luckyblock.setGraphicSize(Std.int(luckyblock.width*SyobonActions.SYOBON_GLOBAL_SCALE));
 		luckyblock.updateHitbox();
 		// luckyblock.x += (luckyblock.width)*i;
-		// luckyblock.x *= CoolUtil.SYOBON_GLOBAL_SCALE;
-		// luckyblock.y *= CoolUtil.SYOBON_GLOBAL_SCALE;
-		// luckyblock.x += (27*CoolUtil.SYOBON_GLOBAL_SCALE)*i;
-		// luckyblock.x -=(luckyblock.width/CoolUtil.SYOBON_GLOBAL_SCALE);
+		// luckyblock.x *= SyobonActions.SYOBON_GLOBAL_SCALE;
+		// luckyblock.y *= SyobonActions.SYOBON_GLOBAL_SCALE;
+		// luckyblock.x += (27*SyobonActions.SYOBON_GLOBAL_SCALE)*i;
+		// luckyblock.x -=(luckyblock.width/SyobonActions.SYOBON_GLOBAL_SCALE);
 		
 		switch (i){
 			case 1:
@@ -63,7 +63,7 @@ class RageBaitStage extends FlxSpriteGroup
 				luckyblock.setPosition(299.371428571452, 228.514285714302);
 			// case 1,2:	
 			// Adjusted, because otherwise the double pixel effect will not be seen :v
-			// luckyblock.x-=1*CoolUtil.SYOBON_GLOBAL_SCALE; 
+			// luckyblock.x-=1*SyobonActions.SYOBON_GLOBAL_SCALE; 
 		}
 		luckyblocks.add(luckyblock);
 		}
@@ -103,7 +103,7 @@ class RageBaitStage extends FlxSpriteGroup
 		// bf.animation.add("singLEFTmiss", [4, 16], 12, false);
 		// bf.animation.add("singDOWNmiss", [7, 17], 12, false);
 		// bf.animation.add("singUPmiss", [11, 18], 12, false);
-		// bf.setGraphicSize(Std.int(bf.width*CoolUtil.SYOBON_GLOBAL_SCALE));
+		// bf.setGraphicSize(Std.int(bf.width*SyobonActions.SYOBON_GLOBAL_SCALE));
 		// bf.updateHitbox();
 		// bf.antialiasing = false;
 		// // bf.screenCenter();
@@ -129,7 +129,7 @@ class RageBaitStage extends FlxSpriteGroup
 		// star.animation.add("singDOWN", [6, 7, 8], 12, false);
 		// star.animation.add("singUP", [9, 10, 11], 12, false);
 		// star.animation.add("singRIGHT", [12, 13, 14], 12, false);
-		// star.setGraphicSize(Std.int(star.width*CoolUtil.SYOBON_GLOBAL_SCALE));
+		// star.setGraphicSize(Std.int(star.width*SyobonActions.SYOBON_GLOBAL_SCALE));
 		// star.updateHitbox();
 		// star.antialiasing = false;
 		// // bf.screenCenter();
@@ -166,7 +166,7 @@ class RageBaitStage extends FlxSpriteGroup
 		// 		 molalla.animation.add(anims[i], [fram], 12, false); 
 		// 	}
 		// }
-		// molalla.setGraphicSize(Std.int(molalla.width*CoolUtil.SYOBON_GLOBAL_SCALE));
+		// molalla.setGraphicSize(Std.int(molalla.width*SyobonActions.SYOBON_GLOBAL_SCALE));
 		// molalla.updateHitbox();
 		// molalla.antialiasing = false;
 		// // bf.screenCenter();
